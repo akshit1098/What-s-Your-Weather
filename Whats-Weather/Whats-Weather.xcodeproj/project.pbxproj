@@ -17,6 +17,7 @@
 		0BAE17A02B9A8EE70012216B /* WeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BAE179E2B9A8EE70012216B /* WeatherTableViewCell.xib */; };
 		0BAE17A32B9A8EFE0012216B /* HourlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE17A12B9A8EFE0012216B /* HourlyTableViewCell.swift */; };
 		0BAE17A42B9A8EFE0012216B /* HourlyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BAE17A22B9A8EFE0012216B /* HourlyTableViewCell.xib */; };
+		0BAE17AE2B9BC5E00012216B /* Fields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAE17AD2B9BC5E00012216B /* Fields.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		0BAE179E2B9A8EE70012216B /* WeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherTableViewCell.xib; sourceTree = "<group>"; };
 		0BAE17A12B9A8EFE0012216B /* HourlyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyTableViewCell.swift; sourceTree = "<group>"; };
 		0BAE17A22B9A8EFE0012216B /* HourlyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HourlyTableViewCell.xib; sourceTree = "<group>"; };
+		0BAE17AD2B9BC5E00012216B /* Fields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fields.swift; path = "../../../../../untitled folder/Fields.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				0BAE17902B9A89200012216B /* Assets.xcassets */,
 				0BAE17922B9A89200012216B /* LaunchScreen.storyboard */,
 				0BAE17952B9A89210012216B /* Info.plist */,
+				0BAE17AD2B9BC5E00012216B /* Fields.swift */,
 			);
 			path = "Whats-Weather";
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BAE17AE2B9BC5E00012216B /* Fields.swift in Sources */,
 				0BAE179F2B9A8EE70012216B /* WeatherTableViewCell.swift in Sources */,
 				0BAE178C2B9A891E0012216B /* ViewController.swift in Sources */,
 				0BAE17A32B9A8EFE0012216B /* HourlyTableViewCell.swift in Sources */,
