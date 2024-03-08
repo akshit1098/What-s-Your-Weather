@@ -78,8 +78,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let lat = currentLocation.coordinate.latitude
         
         //Steps
+        let key = "160e478d3afd50d3a59a71467b0194e9"
         
-        let url = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(long)&appid=160e478d3afd50d3a59a71467b0194e9"
+        
+        let url = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(long)&appid=\(key)"
         
         //Validation
         
