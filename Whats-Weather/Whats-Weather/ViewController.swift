@@ -77,6 +77,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let long = currentLocation.coordinate.longitude
         let lat = currentLocation.coordinate.latitude
         
+        
+        let url = "api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(long)&appid=160e478d3afd50d3a59a71467b0194e9"
+        
+        URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+            
+            //Steps
+            //Validation
+            //Convert data to models/some object
+            //update user interface
+            
+            
+            guard let data = data, error == nil else{
+                print("something went wrong")
+                return
+            }
+            
+        }
+        
+        
+        
         print("\(lat), \(long)")
     }
     
@@ -93,6 +113,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 }
 
-struct Weather{
+struct Weather: Codable{
     
 }
