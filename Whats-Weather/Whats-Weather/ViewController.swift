@@ -77,26 +77,59 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let long = currentLocation.coordinate.longitude
         let lat = currentLocation.coordinate.latitude
         
+        //Steps
         
-        let url = "api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(long)&appid=160e478d3afd50d3a59a71467b0194e9"
+        let url = "https://api.openweathermap.org/data/2.5/forecast?lat=\(lat)&lon=\(long)&appid=160e478d3afd50d3a59a71467b0194e9"
+        
+        //Validation
+        
         
         URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
             
-            //Steps
-            //Validation
-            //Convert data to models/some object
-            //update user interface
             
-            
-            guard let data = data, error == nil else{
+        guard let data = data, error == nil else{
                 print("something went wrong")
                 return
+        }
+            
+            
+        //Convert data to models/some object
+            var p = [String]()
+            var json: WeatherResponse?
+            do{
+                json = try JSONDecoder().decode(WeatherResponse.self, from: data)
+            }
+            catch{
+                print("error: \(error)")
+                
+            }
+            
+            guard let result = json else{
+                return
+            }
+            
+            for i in result.list{
+//                print("Weather: \(i.weather)")
+                for j in i.weather{
+                    print("Prediction: \(j.main)")
+                    
+                    
+                }
             }
             
             
             
             
-        }
+        //update user interface
+            
+            DispatchQueue.main.async{
+                self.table.reloadData()
+            }
+            
+            
+            
+            
+        }.resume()
         
         
         
