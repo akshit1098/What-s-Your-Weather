@@ -20,7 +20,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet var table: UITableView!
     
-    var models = [Weather]()
+    var models = [String]()
+    var lowTemps = [String]()
+    var highTemps = [String]()
+    var dates = [String]()
     
     let locationManager = CLLocationManager()
     
@@ -112,14 +115,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             for i in result.list{
 //                print("Weather: \(i.weather)")
+//                print("Date: \(i.dt_txt)")
+                self.dates.append(String(i.dt_txt))
                 for j in i.weather{
-                    print("Prediction: \(j.main)")
+//                    print("Prediction: \(j.main)")
+                    self.models.append(j.main)
                     
                     
                 }
             }
             
+            for ele in result.list{
+//                print(ele.main.temp_max, ele.main.temp_min)
+                self.lowTemps.append(String(ele.main.temp_min))
+                self.highTemps.append(String(ele.main.temp_max))
+            }
             
+            
+//            print(self.models)
+//            print(self.highTemps)
+//            print(self.lowTemps)
             
             
         //update user interface
@@ -127,7 +142,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             DispatchQueue.main.async{
                 self.table.reloadData()
             }
-            
             
             
             
@@ -145,12 +159,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as! WeatherTableViewCell
+        
+        cell.dayLabel.text = dates[indexPath.row]
+        cell.highTempLabel.text = highTemps[indexPath.row]
+        cell.lowTempLabel.text = lowTemps[indexPath.row]
+        cell.iconImageView.image = UIImage(named: "clear")
+        
+        return cell
     }
 
 
 }
 
-struct Weather: Codable{
-    
-}

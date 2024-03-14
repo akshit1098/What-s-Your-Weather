@@ -52,13 +52,13 @@ struct WeatherCondition: Codable {
     let icon: String
 }
 
-struct Precipitation: Codable {
-    let volume: Double // This represents the volume of precipitation
-
-    private enum CodingKeys: String, CodingKey {
-        case volume = "3h"
-    } // Changed property name to `3h` to match API response
-}
+//struct Precipitation: Codable {
+//    let volume: Double // This represents the volume of precipitation
+//
+//    private enum CodingKeys: String, CodingKey {
+//        case volume = "3h"
+//    } // Changed property name to `3h` to match API response
+//}
 
 struct Cloudiness: Codable {
     let all: Int
