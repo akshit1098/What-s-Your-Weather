@@ -145,8 +145,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             for ele in result.list{
 //                print(ele.main.temp_max, ele.main.temp_min)
-                self.lowTemps.append(String(format:"%.2f",ele.main.temp_min - 273.15) + " C")
-                self.highTemps.append(String(format:"%.2f",ele.main.temp_max - 273.15) + " C")
+                self.lowTemps.append(String(format:"%.2f",ele.main.temp_min - 273.15) + "\u{00B0}" + "C")
+                self.highTemps.append(String(format:"%.2f",ele.main.temp_max - 273.15) + "\u{00B0}" + "C")
             }
             
             
@@ -176,14 +176,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return models.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as! WeatherTableViewCell
         
         cell.dayLabel.text = dates[indexPath.row]
         cell.highTempLabel.text = highTemps[indexPath.row]
+        cell.highTempLabel.textAlignment = .center
+        cell.lowTempLabel.textAlignment = .center
         cell.lowTempLabel.text = lowTemps[indexPath.row]
         cell.iconImageView.image = UIImage(named: "clear")
+        cell.iconImageView.contentMode = .scaleAspectFill
+        
+        
         
         return cell
     }

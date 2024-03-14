@@ -18,7 +18,7 @@ class WeatherTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = .gray
+//        backgroundColor = .gray
         
     }
 
