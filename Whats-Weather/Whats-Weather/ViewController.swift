@@ -71,6 +71,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func extractDay(from timestamp: TimeInterval)->Int?{
+        
+        let date = Date(timeIntervalSince1970: timestamp)
+        
+        let calendar = Calendar.current
+        
+        let day = calendar.component(.day, from: date)
+        
+        return day
+        
+    }
+    
+    
     
     func requestWeatherForLocation(){
         
@@ -89,7 +102,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Validation
         
         
-        URLSession.shared.dataTask(with: URL(string: url)!) { data, response, error in
+        URLSession.shared.dataTask(with: URL(string: url)!) { [self] data, response, error in
             
             
         guard let data = data, error == nil else{
@@ -114,9 +127,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
             for i in result.list{
-//                print("Weather: \(i.weather)")
-//                print("Date: \(i.dt_txt)")
+                print("Weather: \(i.weather)")
+                print("Date: \(i.dt_txt)")
                 self.dates.append(String(i.dt_txt))
+//                if let day = extractDay(from: TimeInterval(i.dt)) {
+//                    self.dates.append(String(day))
+//                } else {
+//                    print("Failed to extract day.")
+//                }
                 for j in i.weather{
 //                    print("Prediction: \(j.main)")
                     self.models.append(j.main)
@@ -127,8 +145,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
             for ele in result.list{
 //                print(ele.main.temp_max, ele.main.temp_min)
-                self.lowTemps.append(String(ele.main.temp_min))
-                self.highTemps.append(String(ele.main.temp_max))
+                self.lowTemps.append(String(format:"%.2f",ele.main.temp_min - 273.15) + " C")
+                self.highTemps.append(String(format:"%.2f",ele.main.temp_max - 273.15) + " C")
             }
             
             
