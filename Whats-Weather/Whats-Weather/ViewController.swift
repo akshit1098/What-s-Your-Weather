@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var lowTemps = [String]()
     var highTemps = [String]()
     var dates = [String]()
+    var images = [UIImage]()
     
     let locationManager = CLLocationManager()
     
@@ -136,8 +137,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //                    print("Failed to extract day.")
 //                }
                 for j in i.weather{
-//                    print("Prediction: \(j.main)")
+                    //print("Prediction: \(j.main)")
                     self.models.append(j.main)
+                    
                     
                     
                 }
@@ -154,6 +156,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            print(self.highTemps)
 //            print(self.lowTemps)
             
+            
+            for i in models{
+                if (i == "Clear"){
+                    self.images.append(UIImage(named: "clear")!)
+                }
+                else if (i == "Clouds"){
+                    self.images.append(UIImage(named: "cloud")!)
+                }
+                else{
+                    self.images.append(UIImage(named: "rain")!)
+                }
+            }
+            
+            print(self.images)
             
         //update user interface
             
@@ -189,7 +205,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.highTempLabel.textAlignment = .center
         cell.lowTempLabel.textAlignment = .center
         cell.lowTempLabel.text = lowTemps[indexPath.row]
-        cell.iconImageView.image = UIImage(named: "clear")
+        cell.iconImageView.image = images[indexPath.row]
         cell.iconImageView.contentMode = .scaleAspectFill
         
         
